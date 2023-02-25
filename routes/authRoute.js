@@ -1,5 +1,5 @@
 import express from "express";
-import { requireSignIn } from "../middlewares/authMiddleWare.js";
+import { isAdmin, requireSignIn } from "../middlewares/authMiddleWare.js";
 import {
   registerController,
   loginController,
@@ -23,6 +23,10 @@ router.post("/forgot-password", forgotPasswordController);
 //protected routs auth
 
 router.get("/user-auth", requireSignIn, (req, res) => {
+  res.status(200).send({ ok: true });
+});
+
+router.get("/admin-auth", requireSignIn, isAdmin, (req, res) => {
   res.status(200).send({ ok: true });
 });
 
