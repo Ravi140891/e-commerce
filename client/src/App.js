@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Policy from "./pages/Policy";
+import PageNotFound from "./pages/PageNotFound";
+import Signup from "./pages/Auth/Signup";
+import Login from "./pages/Auth/Login";
+import Dashboard from "./pages/user/Dashboard";
+import PrivateRoute from "./components/routes/Private";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/dashboard" element={<PrivateRoute />}>
+          <Route path="" element={<Dashboard />} />
+        </Route>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/policy" element={<Policy />} />
+        <Route path="/*" element={<PageNotFound />} />
+      </Routes>
+    </>
   );
 }
 
