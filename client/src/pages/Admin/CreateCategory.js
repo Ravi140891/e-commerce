@@ -26,7 +26,7 @@ function CreateCategory() {
       }
     } catch (error) {
       console.log(error);
-      // toast.error("somthing went wrong in input form");
+      toast.error("somthing went wrong in input form");
     }
   };
 
