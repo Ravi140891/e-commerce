@@ -5,7 +5,9 @@ function Footer() {
   return (
     <div className="footer">
       <h4 className="text-center">
-        All right reserved &copy; ravi-prakash-b6298b164/
+        All right reserved &copy;&nbsp;
+        <i className="fa fa-linkedin"></i>
+        &nbsp;ravi-prakash-b6298b164/
       </h4>
       <p className="text-center mt-3">
         <Link to="/about">About</Link>&nbsp;|&nbsp;

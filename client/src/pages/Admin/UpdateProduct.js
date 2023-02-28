@@ -68,17 +68,19 @@ function UpdateProduct() {
       productData.append("description", description);
       productData.append("price", price);
       productData.append("quantity", quantity);
-      photo && productData.append("photo", photo);
+      if (photo) {
+        productData.append("photo", photo);
+      }
       productData.append("category", category);
       const { data } = await axios.put(
         `/api/v1/product/update-product/${id}`,
         productData
       );
       if (data?.success) {
-        toast.error(data?.message);
-      } else {
         toast.success("Product Updated Successfully");
         navigate("/dashboard/admin/products");
+      } else {
+        toast.error(data?.message);
       }
     } catch (error) {
       console.log(error);
